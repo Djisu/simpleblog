@@ -6,6 +6,11 @@ class PostsController < ApplicationController
         
     end
     def create 
-        render plain: params[:post].inspect
+        #render plain: params[:post].inspect
+        @post = Post.new(post_params)
+    end
+
+    private def post_params
+        params.require(:post).permit(:title, :body)
     end
 end
